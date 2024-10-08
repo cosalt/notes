@@ -1,4 +1,5 @@
 import os
+import time
 class Game:
     def __init__(self):
         self.__board = Board()
@@ -12,9 +13,10 @@ class Game:
 
     def check_winner(self):
         if self.__board.check_winner(self.__current_player.get_symbol()):
-            print(f"{self.__current_player.get_name()} wins............................................................................")
-            while True:
-                print("............................")
+            winner = (f"{self.__current_player.get_name()} wins............................................................................")
+            for i in len(winner):
+                time.sleep(0.5)
+                print(winner[i])
             self.__game_over = True
 
     def play(self):
