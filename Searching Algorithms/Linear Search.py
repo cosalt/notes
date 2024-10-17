@@ -4,3 +4,4 @@ def Linear_Search(list, target): # define a function, with parameters of list an
       return True # can be change to i to return index of where it was found in the list
   return False # can be changed to -1 to return it isn't in the index
 
+
