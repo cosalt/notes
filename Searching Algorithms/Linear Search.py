@@ -7,3 +7,4 @@ def Linear_Search(list, target): # define a function, with parameters of list an
 
 
 
+
