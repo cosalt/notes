@@ -5,3 +5,4 @@ def Linear_Search(list, target): # define a function, with parameters of list an
   return False # can be changed to -1 to return it isn't in the index
 
 
+
