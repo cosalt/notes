@@ -3,10 +3,3 @@ def Linear_Search(list, target): # define a function, with parameters of list an
     if list[i] == target: # compares list[index] to the target, if true, does the indented
       return True # can be change to i to return index of where it was found in the list
   return False # can be changed to -1 to return it isn't in the index
-
-
-
-
-
-
-
