@@ -1,9 +1,3 @@
-person(dave, 25, male).
-person(emma, 25, female).
-person(john, 32, male).
-person(sally, 25, female).
-
-
 animal(dog, mammal, domestic, carnivore).
 animal(cat, mammal, domestic, herbivore).
 animal(deer, mammal, forest, carnivore).
