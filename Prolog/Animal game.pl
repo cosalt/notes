@@ -31,7 +31,7 @@ start :-
     asktype.
 
 asktype :-
-    write("Enter the type of animal (e.g., mammal, bird, fish, amphibian): "),
+    write("\nEnter the type of animal (e.g., mammal, bird, fish, amphibian): "),
     read(Type),
     (
         animal(_, Type, _, _) ->
@@ -43,7 +43,7 @@ asktype :-
 
 
 askfood(Type) :-
-    write("Is it a (herbivore, carnivore or omnivore): "),
+    write("\nIs it a (herbivore, carnivore or omnivore): "),
     read(Food),
     (
         animal(_, Type, _, Food) ->
@@ -54,14 +54,9 @@ askfood(Type) :-
 
 
 askhabitat(Type, Food) :-
-    write("habitat(domestic, forest, ocean, farm, antarctic, water): "),
+    write("\nhabitat(domestic, forest, ocean, farm, antarctic, water): "),
     read(Habitat),
     (
-        animal(_, Type, Habitat, Food);
-        write('no')
+        animal(X, Type, Habitat, Food) ->
+        write(X)
     ).
-
-guess(_) :-
-    write("is it: "),
-    animal(Animal, Type, Habitat, Food), write(Animal).
-
