@@ -54,13 +54,21 @@ asktype :-
     ).
 
 askfood(Type) :-
-    write("\nIs it a (herbivore, carnivore or omnivore): "),
-    read(Food),
-    (
-        animal(_, Type, _, Food) ->
-        askhabitat(Type, Food);
-        write("no"),
-        askfood(Type)
+    write("\nIs it a herbivore?\n"),
+    read(Response),
+    (   Response = 'yes'
+    ->  askhabitat(Type, herbivore)
+    ;   Response = 'no'
+    ->  write("\nIs it a carnivore\n"), read(Response),
+        (    Response = 'yes'
+        ->   askhabitat(Type, carnivore)
+        ;    Response = 'no'
+        ->   write("\nIs it a omnivore?\n"), read(Response),
+             (    Response = 'yes'
+             ->   askhabitat(Type, ominvore)
+             ;    askfood(Type)
+             )
+        )
     ).
 
 
