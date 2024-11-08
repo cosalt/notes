@@ -1,3 +1,9 @@
+person(dave, 25, male).
+person(emma, 25, female).
+person(john, 32, male).
+person(sally, 25, female).
+
+
 animal(dog, mammal, domestic, carnivore).
 animal(cat, mammal, domestic, herbivore).
 animal(deer, mammal, forest, carnivore).
@@ -24,17 +30,28 @@ start :-
     write("i'll try to guess your animal"),
     asktype.
 
-asktype :-
-    write("\nEnter the type of animal (e.g., mammal, bird, fish, amphibian): "),
-    read(Type),
-    (
-        animal(_, Type, _, _) ->
-        askfood(Type);
-        write("no"),
-        asktype
+asktype :- 
+    write("\nIs it a mammal?\n"),
+    read(Response),
+    (   Response = 'yes'
+    ->  askfood(mammal)
+    ;   Response = 'no'
+    ->  write("\nIs it a bird?\n"), read(Response),
+        (   Response = 'yes'
+        ->  askfood(bird)
+        ;   Response = 'no'
+        ->  write("\nIs it a fish?\n"), read(Response),
+            (   Response = 'yes'
+            ->  askfood(fish)
+            ;   Response = 'no'
+            ->  write("\nIs it an amphibian?\n"), read(Response),
+                (   Response = 'yes'
+                ->  askfood(amphibian)
+                ;   asktype
+                )
+            )
+        )
     ).
-
-
 
 askfood(Type) :-
     write("\nIs it a (herbivore, carnivore or omnivore): "),
