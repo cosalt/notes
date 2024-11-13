@@ -2,6 +2,8 @@
         STA 99
         LDA ONE
         STA 28
+        LDA 99
+        STA 98
 LOOP    LDA 99
         SUB 28
         STA 99
