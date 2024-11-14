@@ -6,13 +6,12 @@ def IterativeCalculate(num):
     return sum(arr)
 
 
+
 def recursivecalculate(num, i, total=0):
     if i != 0:
         if (num % i) == 0:
-            print(i)
             total = total + i
         return rec(num, i-1, total)
-
     return total
 
 print(recursivecalculate(10, 10))
