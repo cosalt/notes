@@ -1,19 +1,15 @@
-def binarysearch(arr, search):
+def binarysearch(arr, target):
     arr.sort()
-    lower = 0
-    upper = len(arr) - 1
-    while (lower <= upper):
-        mid = (lower + upper) // 2
-        if arr[mid] == search:
-            return(mid)
-        elif arr[mid] < search:
-            lower = mid + 1
+    left = 0
+    right = len(arr) - 1
+
+    while left <= right:
+        middle = (right + left) // 2
+
+        if arr[middle] == target:
+            return middle
+        elif arr[middle] > target:
+            right = middle - 1
         else:
-            upper = mid - 1
-    return(f"not found")
-
-
-
-
-arr = [4, 22, 36, 50, 83, 121, 180]
-print(binarysearch(arr, 40))
+            left = middle + 1
+    return - 1
