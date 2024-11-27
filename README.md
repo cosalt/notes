@@ -54,12 +54,12 @@ An introduction to Prolog, focusing on logic programming.
 
 ### Topics Covered
 - **Defining Facts and Rules**  
-  `
+  ```
   parent(john, mary).
   parent(mary, alice).
 
   grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
-  `
+  ```
 
 - **Querying**  
   ```
@@ -199,12 +199,12 @@ Solutions to Advent of Code problems, organized by year.
 
 ### Example
 - **Day 1: Calorie Counting**  
-  `
+  ```
   with open("input.txt") as f:
       data = list(map(int, f.read().split()))
 
   print(sum(data))
-  `
+  ```
 
 ---
 
@@ -230,12 +230,12 @@ Solutions to Advent of Code problems, organized by year.
   3. Open a pull request on GitHub.
 
 - **Handling Merge Conflicts**  
-  `
+  ```
   git merge main
   # Resolve conflicts in the editor
   git add .
   git commit
-  `
+  ```
 
 ---
 
