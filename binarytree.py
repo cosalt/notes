@@ -1,6 +1,6 @@
 class Node:
     def __init__(self):
-        self.data = ""
+        self.data = -1
         self.left = -1
         self.right = -1
 
@@ -28,11 +28,50 @@ def addnode(userdata):
     global emptylistpointer, rootnodepointer
     if rootnodepointer == -1:
         tree[emptylistpointer].data = userdata
-        emptylistpointer = tree[emptylistpointer].left
-        tree[emptylistpointer].left = -1
         rootnodepointer = emptylistpointer
+        emptylistpointer = tree[emptylistpointer].left
+        tree[rootnodepointer].left = -1
     else:
-        pass
+        currentnode = rootnodepointer
+        while True:
+            if userdata < tree[currentnode].data:
+                if tree[currentnode].left == -1:
+                    tree[currentnode].left = emptylistpointer
+                    tree[emptylistpointer].data = userdata
+                    tree[emptylistpointer].left = -1
+                    tree[emptylistpointer].right = -1
+                    emptylistpointer = tree[emptylistpointer].left
+                    break
+                else:
+                    currentnode = tree[currentnode].left
+            else:
+                if tree[currentnode].right == -1:
+                    tree[currentnode].right = emptylistpointer
+                    tree[emptylistpointer].data = userdata
+                    tree[emptylistpointer].left = -1
+                    tree[emptylistpointer].right = -1
+                    emptylistpointer = tree[emptylistpointer].right
+                    break
+                else:
+                    currentnode = tree[currentnode].right
 
-addnode("ANDY")
+
 printtree()
+addnode(5)
+print("\n")
+printtree()
+
+addnode(4)
+print("\n")
+printtree()
+
+addnode(3)
+print("\n")
+printtree()
+
+addnode(6)
+print("\n")
+printtree()
+
+
+
