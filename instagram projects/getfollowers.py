@@ -22,7 +22,7 @@ def get_instagram_following(username, password, target_profile):
         time.sleep(3)  # Wait for the profile page to load
 
         # Click on the "Following" link
-        following_link = driver.find_element(By.PARTIAL_LINK_TEXT, "following")
+        following_link = driver.find_element(By.PARTIAL_LINK_TEXT, "followers")
         following_link.click()
         time.sleep(3)  # wait
 
