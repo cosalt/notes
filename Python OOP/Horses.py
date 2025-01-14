@@ -10,8 +10,9 @@ class Horse:
     def GetMaxFenceHeight(self):
         return self.__MaxFenceHeight
     
-    def Success():
-        pass
+    def Success(self, height, risk):
+        exponents = {5: 0.6, 4: 0.7, 3: 0.8, 2: 0.9, 1: 1}
+        return int(self.__PercentageSuccess ** exponents.get(risk, 1))
 
 
 Horses = []   
@@ -27,7 +28,7 @@ print(Horses[1].GetName())
 
 
 
-class Fense:
+class Fence:
     def __init__(self, Height, Risk):
         self.__Height = Height
         self.__Risk = Risk
@@ -52,6 +53,8 @@ for i in range(4):
         print("Must be within 1-5!")
         risk = int(input("Risk: "))
     
-    Course.append([height, risk])
+    temp = Fense(height,risk)
+    
+    Course.append(temp)
 
 print(Course)
