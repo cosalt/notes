@@ -11,11 +11,13 @@ class Horse:
         return self.__MaxFenceHeight
     
     def Success(self, height, risk):
+        if self.__MaxFenceHeight < height:
+            return self.__PercentageSuccess * 0.2
         exponents = {5: 0.6, 4: 0.7, 3: 0.8, 2: 0.9, 1: 1}
-        return int(self.__PercentageSuccess ** exponents.get(risk, 1))
+        return self.__PercentageSuccess * exponents.get(risk, 1)
 
 
-Horses = []   
+Horses = []
 Beauty = Horse('Beauty', 150, 72)
 Horses.append(Beauty)
 
@@ -41,7 +43,7 @@ class Fence:
     
 Course = []
 for i in range(4):
-    print("\n\n")
+    print("\n")
 
     height = int(input("Height: "))
     while height < 70 or height > 180:
@@ -53,8 +55,23 @@ for i in range(4):
         print("Must be within 1-5!")
         risk = int(input("Risk: "))
     
-    temp = Fense(height,risk)
+    temp = Fence(height,risk)
     
     Course.append(temp)
 
 print(Course)
+
+"""for i in range(len(Course)):
+    for j in range(len(Horses)):
+        print(f"The horse {Horses[j].GetName()} at fence {i+1} has a {Horses[j].Success(Course[i].getheight(), Course[i].getrisk())}% chance of success")"""
+
+
+for j in range(len(Horses)):
+    for i in range(len(Course)):
+        print(f"The horse {Horses[j].GetName()} at fence {i+1} has a {Horses[j].Success(Course[i].getheight(), Course[i].getrisk())}% chance of success")
+
+for j in range(len(Horses)):
+    total_success = sum(Horses[j].Success(Course[i].getheight(), Course[i].getrisk()) for i in range(len(Course)))
+    print(f"The average success rate for {Horses[j].GetName()} is {total_success / len(Course):.3f}%")
+
+
