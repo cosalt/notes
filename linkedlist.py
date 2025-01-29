@@ -33,7 +33,10 @@ startpointer = -1
 
 
 def addnode(data):
-    global startpointer, emptypointer
+    global startpointer, emptypointer, arr
+    if emptypointer == -1:
+        print("full. ")
+        return None
     if startpointer == -1:
         arr[emptypointer].Data = data
         startpointer = emptypointer
@@ -43,14 +46,23 @@ def addnode(data):
     else:
         arr[emptypointer].Data = data
         temp = emptypointer
-
+        
         emptypointer = arr[emptypointer].Pointer
         arr[temp].Pointer = -1
         
-        for i in range(len(arr)):
-            if arr[i].Pointer == -1:
+        temppoint = arr[startpointer].Pointer
+        while temppoint != -1:
+            temppoint = arr[temppoint].Pointer
+        else:
+            print('j')
+        arr[temppoint].Pointer = temp
+    return arr          
                 
 
 
 addnode(3)
+addnode(4)
+addnode(5)
+for j in arr:
+    print(j.Pointer)
 printarr()
