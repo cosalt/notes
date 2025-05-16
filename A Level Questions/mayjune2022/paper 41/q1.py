@@ -1,12 +1,15 @@
 playerscores = [[" ", " "] for i in range(11)]
 
 def ReadHighScores():
-    with open("HighScore.txt", "r") as f:
-        lines = [line.strip() for line in f if line.strip()]
-        for i in range(0, min(len(lines), 22), 2):
-            name = lines[i]
-            score = int(lines[i + 1])
-            playerscores[i // 2] = [name, score]
+    try:
+        with open("HighScore.txt", "r") as f:
+            lines = [line.strip() for line in f if line.strip()]
+            for i in range(0, min(len(lines), 22), 2):
+                name = lines[i]
+                score = int(lines[i + 1])
+                playerscores[i // 2] = [name, score]
+    except FileNotFoundError:
+        return "file not found"
 
 
 def OutputHighScores():
@@ -35,7 +38,12 @@ while True:
 def topten(playername, playerscore):
     OutputHighScores()
     playerscores[-1] = ([playername, playerscore])
-    playerscores.sort(key=lambda x: x[1], reverse=True)
+    n = len(playerscores)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if playerscores[j][1] > playerscores[j + 1][1]:
+                playerscores[j], playerscores[j + 1] = playerscores[j + 1], playerscores[j]
+
     OutputHighScores()
     
 
