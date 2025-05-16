@@ -41,7 +41,7 @@ def topten(playername, playerscore):
     n = len(playerscores)
     for i in range(n):
         for j in range(0, n - i - 1):
-            if playerscores[j][1] > playerscores[j + 1][1]:
+            if playerscores[j][1] < playerscores[j + 1][1]:
                 playerscores[j], playerscores[j + 1] = playerscores[j + 1], playerscores[j]
 
     OutputHighScores()
