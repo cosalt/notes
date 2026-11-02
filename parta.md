@@ -105,7 +105,3 @@ The +100 bonus is far bigger than any cost (at most 8). So the game is really ab
    - a fake "human" (a tiny class with a fixed list of moves) to test an illegal move, Z and a draw without having to type anything
 8. **[*] Extras:** a move counter, a turn timer, saving the move string (like "YM") to a file, or a graphical interface.
 
-## How it links to Part 2
-Part 2 replaces the human's keyboard with their hand. `a3_advGame.py` is a copy of `a3_game.py` where a human turn calls `get_move()` instead of `input()`. It takes a photo or webcam frame, MediaPipe finds the hand's 21 points, your preprocessing turns them into features, and the trained classifier outputs a letter. Hinger moves are exactly the 26 letters (A–Y for cells, Z to end the game), so every ASL letter maps straight onto a move. Part 1's `State.move()`, the scoring and the illegal-move rule all work unchanged, and your Part 1 AI becomes the opponent you play by signing. That's why Part 1 needs to work before you can demo Part 2. It's also why the recognised letter should be confirmed before it's played: a misread sign could easily be an illegal move or a Z, and both lose the game instantly.
-
-One small thing in your README: J and Z aren't similar handshapes. J uses the little finger (like I), and Z uses the index finger. What they have in common is that both move in real ASL, so your group still needs to agree on one still pose for each.
